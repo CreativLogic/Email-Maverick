@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CopyPro - Professional Copywriting & Email Marketing</title>
+    <meta name="description" content="Transform your business with compelling copy and high-converting email campaigns">
+
+    <style>
+        /* ===== EASY CUSTOMIZATION VARIABLES ===== */
+        :root {
+            --primary-color: #40C6FF;
+            --accent-color: #00B4D8;
+            --background-dark: #0D1B2A;
+            --card-background: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-color: #334155;
+
+            /* Business Info - EDIT THESE */
+            --business-name: "CopyPro";
+            --business-tagline: "Words That Convert. Stories That Sell.";
+            --business-email: "hello@copypro.com";
+            --business-phone: "+1 (555) 123-4567";
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--background-dark) 0%, #1E293B 50%, var(--background-dark) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Animations */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-color); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--primary-color); }
+            50% { box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--accent-color); }
+            100% { box-shadow: 0 0 5px var(--primary-color); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Utility Classes */
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glow-hover:hover {
+            animation: glow 2s ease-in-out infinite alternate;
+            transform: translateY(-2px);
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .slide-in-up {
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .electric-gradient {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        }
+
+        .electric-text {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navy-gradient {
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+            background: rgba(13, 27, 42, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            background: rgba(64, 198, 255, 0.1);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Cards */
+        .card {
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+            border: 1px solid rgba(64, 198, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Floating Icons */
+        .floating-icon {
+            position: absolute;
+            background: rgba(64, 198, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .floating-icon-1 {
+            top: 15%;
+            left: 10%;
+            width: 64px;
+            height: 64px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-icon-2 {
+            top: 25%;
+            right: 15%;
+            width: 48px;
+            height: 48px;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .floating-icon-3 {
+            bottom: 25%;
+            left: 15%;
+            width: 56px;
+            height: 56px;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services */
+        .service-card .icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(64, 198, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .icon {
+            background: rgba(64, 198, 255, 0.3);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Case Studies */
+        .case-study {
+            text-align: center;
+        }
+
+        .case-study .metric {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--card-background) 0%, var(--background-dark) 50%, var(--card-background) 100%);
+            text-align: center;
+        }
+
+        /* Contact */
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item .icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(64, 198, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-background);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Page Navigation */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Blog Styles */
+        .blog-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--card-background) 50%, var(--background-dark) 100%);
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .article-card {
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+            border: 1px solid rgba(64, 198, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .floating-icon {
+                display: none;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Hide/Show mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <div class="logo-icon">C</div>
+                <span style="font-size: 1.25rem; font-weight: 700;" class="electric-text">CopyPro</span>
+                <span class="badge" style="margin-left: 0.5rem;">Pro</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" onclick="showPage('home')" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('blog')" data-page="blog">Blog</a></li>
+            </ul>
+
+            <a href="#" class="btn btn-primary glow-hover">Get Started</a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="floating-icon floating-icon-1">✍️</div>
+            <div class="floating-icon floating-icon-2">📧</div>
+            <div class="floating-icon floating-icon-3">📈</div>
+
+            <div class="hero-content">
+                <div class="badge float-animation">Professional Copywriting Services</div>
+                <h1>
+                    <span id="typed-text" class="typing-animation"></span>
+                </h1>
+                <p class="slide-in-up">
+                    Transform your business with compelling copy that drives conversions, builds trust, and grows your revenue through strategic email marketing campaigns.
+                </p>
+                <div class="hero-buttons slide-in-up">
+                    <a href="#" class="btn btn-primary glow-hover">Start Your Project</a>
+                    <a href="#" class="btn btn-secondary glow-hover">View Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title electric-text">About CopyPro</h2>
+                <p class="section-subtitle">
+                    We specialize in crafting high-converting copy and email marketing campaigns that turn prospects into customers and customers into brand advocates.
+                </p>
+
+                <div class="grid grid-3">
+                    <div class="card glow-hover">
+                        <div class="icon">🎯</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Strategic Approach</h3>
+                        <p style="color: var(--text-secondary);">
+                            Every piece of copy is crafted with your specific audience and conversion goals in mind.
+                        </p>
+                    </div>
+                    <div class="card glow-hover">
+                        <div class="icon">📊</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Data-Driven Results</h3>
+                        <p style="color: var(--text-secondary);">
+                            We use analytics and A/B testing to continuously optimize your campaigns for maximum ROI.
+                        </p>
+                    </div>
+                    <div class="card glow-hover">
+                        <div class="icon">⚡</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Fast Turnaround</h3>
+                        <p style="color: var(--text-secondary);">
+                            Get high-quality copy delivered on time, every time, without compromising on quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" style="background: rgba(30, 41, 59, 0.5);">
+            <div class="container">
+                <h2 class="section-title electric-text">Our Services</h2>
+                <p class="section-subtitle">Comprehensive copywriting solutions to grow your business</p>
+
+                <div class="grid grid-3">
+                    <div class="card service-card glow-hover">
+                        <div class="icon">📧</div>
+                        <h3>Email Marketing Campaigns</h3>
+                        <div class="badge">Starting at $497</div>
+                        <p style="color: var(--text-secondary);">
+                            High-converting email sequences that nurture leads and drive sales
+                        </p>
+                    </div>
+                    <div class="card service-card glow-hover">
+                        <div class="icon">🚀</div>
+                        <h3>Sales Pages</h3>
+                        <div class="badge">Starting at $997</div>
+                        <p style="color: var(--text-secondary);">
+                            Persuasive landing pages that convert visitors into customers
+                        </p>
+                    </div>
+                    <div class="card service-card glow-hover">
+                        <div class="icon">🌐</div>
+                        <h3>Website Copy</h3>
+                        <div class="badge">Starting at $797</div>
+                        <p style="color: var(--text-secondary);">
+                            Compelling website content that builds trust and authority
+                        </p>
+                    </div>
+                    <div class="card service-card glow-hover">
+                        <div class="icon">📢</div>
+                        <h3>Ad Copy</h3>
+                        <div class="badge">Starting at $297</div>
+                        <p style="color: var(--text-secondary);">
+                            Attention-grabbing ads for social media and search platforms
+                        </p>
+                    </div>
+                    <div class="card service-card glow-hover">
+                        <div class="icon">🛍️</div>
+                        <h3>Product Descriptions</h3>
+                        <div class="badge">Starting at $197</div>
+                        <p style="color: var(--text-secondary);">
+                            Engaging product copy that highlights benefits and drives purchases
+                        </p>
+                    </div>
+                    <div class="card service-card glow-hover">
+                        <div class="icon">📋</div>
+                        <h3>Content Strategy</h3>
+                        <div class="badge">Starting at $1,497</div>
+                        <p style="color: var(--text-secondary);">
+                            Complete content roadmap aligned with your business goals
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title electric-text">Success Stories</h2>
+                <p class="section-subtitle">Real results for real businesses</p>
+
+                <div class="grid grid-3">
+                    <div class="card case-study glow-hover">
+                        <div class="metric">347%</div>
+                        <div class="badge">Open Rate Increase</div>
+                        <h3 style="color: var(--primary-color); margin: 1rem 0;">TechStart Inc.</h3>
+                        <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem;">347% increase in email open rates</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Complete email marketing overhaul resulted in massive engagement boost</p>
+                    </div>
+                    <div class="card case-study glow-hover">
+                        <div class="metric">$2.3M</div>
+                        <div class="badge">Additional Revenue</div>
+                        <h3 style="color: var(--primary-color); margin: 1rem 0;">E-Commerce Pro</h3>
+                        <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem;">$2.3M additional revenue</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Sales page optimization drove significant revenue growth</p>
+                    </div>
+                    <div class="card case-study glow-hover">
+                        <div class="metric">89%</div>
+                        <div class="badge">Conversion Boost</div>
+                        <h3 style="color: var(--primary-color); margin: 1rem 0;">SaaS Solutions</h3>
+                        <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem;">89% conversion rate improvement</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Landing page copy redesign nearly doubled conversions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="section-title electric-text">Ready to Transform Your Business?</h2>
+                <p class="section-subtitle">
+                    Let's create copy that converts and email campaigns that drive real results for your business.
+                </p>
+
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <a href="#" class="btn btn-primary glow-hover" style="padding: 1rem 2rem; font-size: 1.1rem;">Get Your Free Consultation</a>
+                    <a href="#" class="btn btn-secondary glow-hover" style="padding: 1rem 2rem; font-size: 1.1rem;">View Pricing</a>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 2rem; color: var(--text-secondary); flex-wrap: wrap;">
+                    <div>✓ 30-day guarantee</div>
+                    <div>✓ Free revisions</div>
+                    <div>✓ Expert support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title electric-text">Get In Touch</h2>
+                <div class="grid grid-3">
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <p style="color: var(--text-secondary);">hello@copypro.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <h3>Phone</h3>
+                        <p style="color: var(--text-secondary);">+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">⏰</div>
+                        <h3>Response Time</h3>
+                        <p style="color: var(--text-secondary);">Within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- BLOG PAGE -->
+    <div id="blog" class="page">
+        <!-- Blog Header -->
+        <section class="blog-header">
+            <div class="container">
+                <div class="badge float-animation">Copywriting Insights & Strategies</div>
+                <h1 class="section-title electric-text">The CopyPro Blog</h1>
+                <p class="section-subtitle">
+                    Expert insights, proven strategies, and actionable tips to elevate your copywriting and email marketing game.
+                </p>
+            </div>
+        </section>
+
+        <!-- Blog Filters -->
+        <section class="section" style="padding: 2rem 0;">
+            <div class="container">
+                <div class="blog-filters">
+                    <button class="filter-btn active" onclick="filterArticles('all')">All</button>
+                    <button class="filter-btn" onclick="filterArticles('email-marketing')">Email Marketing</button>
+                    <button class="filter-btn" onclick="filterArticles('copywriting')">Copywriting</button>
+                    <button class="filter-btn" onclick="filterArticles('conversion')">Conversion</button>
+                    <button class="filter-btn" onclick="filterArticles('strategy')">Strategy</button>
+                    <button class="filter-btn" onclick="filterArticles('case-studies')">Case Studies</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Articles -->
+        <section class="section" id="featured-articles">
+            <div class="container">
+                <h2 class="section-title electric-text">Featured Articles</h2>
+                <div class="grid grid-2">
+                    <div class="article-card glow-hover" data-category="email-marketing">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <div class="badge">Featured</div>
+                            <div style="font-size: 2rem;">📧</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); font-size: 1.25rem; margin-bottom: 1rem; cursor: pointer;">
+                            The Psychology Behind High-Converting Email Subject Lines
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Discover the cognitive triggers that make subscribers click open and how to implement them in your campaigns.
+                        </p>
+                        <div class="article-meta">
+                            <span class="badge" style="font-size: 0.75rem;">Email Marketing</span>
+                            <span>8 min read • Dec 15, 2024</span>
+                        </div>
+                    </div>
+                    <div class="article-card glow-hover" data-category="copywriting">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <div class="badge">Featured</div>
+                            <div style="font-size: 2rem;">✍️</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); font-size: 1.25rem; margin-bottom: 1rem; cursor: pointer;">
+                            10 Copywriting Formulas That Convert Every Time
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Master these proven frameworks to write compelling copy that drives action and increases conversions.
+                        </p>
+                        <div class="article-meta">
+                            <span class="badge" style="font-size: 0.75rem;">Copywriting</span>
+                            <span>12 min read • Dec 12, 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Articles -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title electric-text">Latest Articles</h2>
+                <div class="grid grid-3" id="articles-grid">
+                    <div class="article-card glow-hover" data-category="case-studies">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <span class="badge" style="font-size: 0.75rem;">Case Studies</span>
+                            <div style="font-size: 1.5rem;">📈</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; cursor: pointer;">
+                            How We Increased Client Revenue by 347% with Email Automation
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            A detailed breakdown of the strategy and tactics we used to transform our client's email marketing.
+                        </p>
+                        <div class="article-meta">
+                            <span>15 min read</span>
+                            <span>Dec 10, 2024</span>
+                        </div>
+                    </div>
+                    <div class="article-card glow-hover" data-category="strategy">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <span class="badge" style="font-size: 0.75rem;">Strategy</span>
+                            <div style="font-size: 1.5rem;">🧪</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; cursor: pointer;">
+                            The Ultimate Guide to A/B Testing Your Copy
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Learn how to systematically test and optimize your copy for maximum conversion rates.
+                        </p>
+                        <div class="article-meta">
+                            <span>10 min read</span>
+                            <span>Dec 8, 2024</span>
+                        </div>
+                    </div>
+                    <div class="article-card glow-hover" data-category="conversion">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <span class="badge" style="font-size: 0.75rem;">Conversion</span>
+                            <div style="font-size: 1.5rem;">🚀</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; cursor: pointer;">
+                            Landing Page Copy That Converts: 7 Essential Elements
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            The must-have components every high-converting landing page needs to turn visitors into customers.
+                        </p>
+                        <div class="article-meta">
+                            <span>9 min read</span>
+                            <span>Dec 5, 2024</span>
+                        </div>
+                    </div>
+                    <div class="article-card glow-hover" data-category="email-marketing">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <span class="badge" style="font-size: 0.75rem;">Email Marketing</span>
+                            <div style="font-size: 1.5rem;">👤</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; cursor: pointer;">
+                            Email Personalization Beyond First Names
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Advanced personalization techniques that create deeper connections with your subscribers.
+                        </p>
+                        <div class="article-meta">
+                            <span>7 min read</span>
+                            <span>Dec 3, 2024</span>
+                        </div>
+                    </div>
+                    <div class="article-card glow-hover" data-category="copywriting">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <span class="badge" style="font-size: 0.75rem;">Copywriting</span>
+                            <div style="font-size: 1.5rem;">📚</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; cursor: pointer;">
+                            The Art of Storytelling in Sales Copy
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            How to weave compelling narratives that engage emotions and drive purchasing decisions.
+                        </p>
+                        <div class="article-meta">
+                            <span>11 min read</span>
+                            <span>Nov 30, 2024</span>
+                        </div>
+                    </div>
+                    <div class="article-card glow-hover" data-category="strategy">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                            <span class="badge" style="font-size: 0.75rem;">Strategy</span>
+                            <div style="font-size: 1.5rem;">🤝</div>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; cursor: pointer;">
+                            Building Trust Through Authentic Copy
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Strategies to create genuine connections with your audience through honest, transparent messaging.
+                        </p>
+                        <div class="article-meta">
+                            <span>6 min read</span>
+                            <span>Nov 28, 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="section cta-section">
+            <div class="container">
+                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <div style="width: 80px; height: 80px; background: rgba(64, 198, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;" class="float-animation">📬</div>
+                    <h2 class="section-title electric-text">Never Miss Our Latest Insights</h2>
+                    <p class="section-subtitle">
+                        Get weekly copywriting tips, email marketing strategies, and exclusive case studies delivered to your inbox.
+                    </p>
+
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; max-width: 400px; margin-left: auto; margin-right: auto;">
+                        <input type="email" placeholder="Enter your email address" style="flex: 1; padding: 0.75rem; background: var(--card-background); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);">
+                        <button class="btn btn-primary glow-hover">Subscribe</button>
+                    </div>
+
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Join 15,000+ copywriters and marketers. Unsubscribe anytime.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                        <div class="logo-icon">C</div>
+                        <span style="font-size: 1.25rem; font-weight: 700;" class="electric-text">CopyPro</span>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; max-width: 250px;">
+                        Professional copywriting and email marketing services that drive real results for your business.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-secondary" style="padding: 0.5rem; width: 40px; height: 40px;">📧</button>
+                        <button class="btn btn-secondary" style="padding: 0.5rem; width: 40px; height: 40px;">📱</button>
+                        <button class="btn btn-secondary" style="padding: 0.5rem; width: 40px; height: 40px;">💼</button>
+                        <button class="btn btn-secondary" style="padding: 0.5rem; width: 40px; height: 40px;">🔗</button>
+                    </div>
+                </div>
+                <div>
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Email Marketing</a></li>
+                        <li><a href="#">Sales Pages</a></li>
+                        <li><a href="#">Website Copy</a></li>
+                        <li><a href="#">Ad Copy</a></li>
+                        <li><a href="#">Content Strategy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <div style="color: var(--text-secondary);">
+                        <p>📧 hello@copypro.com</p>
+                        <p>📞 +1 (555) 123-4567</p>
+                        <p>📍 123 Business Ave, Suite 100</p>
+                        <p>🌐 San Francisco, CA 94105</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="color: var(--text-secondary);">
+                    © 2024 CopyPro. All rights reserved. Made with ⚡ for copywriters.
+                </p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // EASY CUSTOMIZATION VARIABLES - Edit these!
+        const BUSINESS_CONFIG = {
+            name: "CopyPro",
+            tagline: "Words That Convert. Stories That Sell.",
+            email: "hello@copypro.com",
+            phone: "+1 (555) 123-4567",
+            typingText: "Words That Convert. Stories That Sell.",
+            enableAnimations: true
+        };
+
+        // Typing Animation
+        function startTypingAnimation() {
+            if (!BUSINESS_CONFIG.enableAnimations) return;
+
+            const element = document.getElementById('typed-text');
+            const text = BUSINESS_CONFIG.typingText;
+            let index = 0;
+
+            element.style.borderRight = '3px solid var(--primary-color)';
+            element.style.animation = 'blink-caret 0.75s step-end infinite';
+
+            function type() {
+                if (index < text.length) {
+                    element.textContent = text.slice(0, index + 1);
+                    index++;
+                    setTimeout(type, 100);
+                } else {
+                    // Keep blinking cursor
+                    setInterval(() => {
+                        element.style.borderRight = element.style.borderRight === 'none' ?
+                            '3px solid var(--primary-color)' : 'none';
+                    }, 500);
+                }
+            }
+
+            setTimeout(type, 1000);
+        }
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Blog Filtering
+        function filterArticles(category) {
+            const articles = document.querySelectorAll('.article-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            const featuredSection = document.getElementById('featured-articles');
+
+            // Update button states
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Show/hide featured section
+            if (category === 'all') {
+                featuredSection.style.display = 'block';
+            } else {
+                featuredSection.style.display = 'none';
+            }
+
+            // Filter articles
+            articles.forEach(article => {
+                if (category === 'all' || article.dataset.category === category) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            startTypingAnimation();
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for scroll animations
+            document.querySelectorAll('.card, .article-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Update contact info from config
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update email links
+            document.querySelectorAll('a[href*="hello@copypro.com"], p:contains("hello@copypro.com")').forEach(el => {
+                if (el.tagName === 'A') {
+                    el.href = `mailto:${BUSINESS_CONFIG.email}`;
+                }
+                el.textContent = el.textContent.replace('hello@copypro.com', BUSINESS_CONFIG.email);
+            });
+
+            // Update phone links
+            document.querySelectorAll('p:contains("+1 (555) 123-4567")').forEach(el => {
+                el.textContent = el.textContent.replace('+1 (555) 123-4567', BUSINESS_CONFIG.phone);
+            });
+        });
+    </script>
+</body>
+</html>
